@@ -1,6 +1,6 @@
 module.exports = {
   config: {
-    name: "clear",
+    name: "nettoyer",
     aliases: ["Nett"],
     author: "kshitiz",  
     version: "2.0",
