@@ -2,26 +2,26 @@ const moment = require("moment-timezone");
 
 module.exports = {
 	config: {
-		name: "daily",
+		name: "don",
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
 		description: {
 			vi: "Nhận quà hàng ngày",
-			en: "Receive daily gift"
+			en: "𝑹𝒆𝒄𝒆𝒗𝒐𝒊𝒓 𝒅𝒆𝒔 𝑫𝒐𝒏𝒔 𝒒𝒖𝒐𝒕𝒊𝒅𝒊𝒆𝒏𝒔."
 		},
 		category: "game",
 		guide: {
 			vi: "   {pn}: Nhận quà hàng ngày"
 				+ "\n   {pn} info: Xem thông tin quà hàng ngày",
-			en: "   {pn}"
-				+ "\n   {pn} info: View daily gift information"
+			en: "   {pn} :  𝑷𝒐𝒖𝒓 𝑹𝒆́𝒄𝒍𝒂𝒎𝒆𝒓 𝒕𝒐𝒏 𝑫𝒖̂."
+				+ "\n   {pn} 𝒊𝒏𝒇𝒐 :  𝑷𝒐𝒖𝒓 𝒗𝒐𝒊𝒓 𝒍𝒆 𝑪𝒐𝒏𝒕𝒆𝒏𝒖 𝒅𝒖 𝑫𝒐𝒏 𝒅𝒖 𝑱𝒐𝒖𝒓. 𝑬𝒕 𝒑𝒆𝒖𝒕-𝒆̂𝒕𝒓𝒆, 𝒍𝒆𝒔 𝒊𝒏𝒇𝒐𝒔 𝒄𝒐𝒏𝒄𝒆𝒓𝒏𝒂𝒏𝒕𝒔."
 		},
 		envConfig: {
 			rewardFirstDay: {
-				coin: 100,
-				exp: 10
+				coin: 90000,
+				exp: 50
 			}
 		}
 	},
@@ -46,8 +46,8 @@ module.exports = {
 			friday: "Friday",
 			saturday: "Saturday",
 			sunday: "Sunday",
-			alreadyReceived: "You have already received the gift",
-			received: "𝐽𝐸 𝑇'𝑂𝐹𝐹𝑅𝐸 100$ 𝐴𝑈𝐽𝑂𝑈𝑅𝐷'𝐻𝑈𝐼 !"
+			alreadyReceived: "⚜🌹.................................. \n \n𝑻'𝒆𝒏 𝒂𝒔 𝑫𝒆́𝒋𝒂̀ 𝑹𝒆𝒄̧𝒖, 𝒕𝒂 𝒑𝒂𝒓𝒕 𝒅𝒖 𝒅𝒐𝒏 𝒒𝒖𝒐𝒕𝒊𝒅𝒊𝒆𝒏 🤨\n \n⚜🌹.................................. ",
+			received: "⚜🌹.................................. \n \n𝐃𝐎𝐍 𝐐𝐔𝐎𝐓𝐈𝐃𝐈𝐄𝐍 😎: \n \n𝑻𝒖 𝒈𝒂𝒈𝒏𝒆𝒔 :  \n     ✦ 𝒖𝒏𝒆 𝒔𝒐𝒎𝒎𝒆 𝒅𝒆  %1 $ , \n     ✦  %2  𝒑𝒐𝒊𝒏𝒕𝒔 𝒅'𝑬𝒙𝒑𝒆́𝒓𝒊𝒆𝒏𝒄𝒆. \n \n⚜🌹.................................. "
 		}
 	},
 
@@ -56,7 +56,7 @@ module.exports = {
 		if (args[0] == "info") {
 			let msg = "";
 			for (let i = 1; i < 8; i++) {
-				const getCoin = Math.floor(reward.coin * (1 + 20 / 100) ** ((i == 0 ? 7 : i) - 1));
+				const getCoin = Math.floor(reward.coin * (5 + 20 / 100) ** ((i == 0 ? 7 : i) - 1));
 				const getExp = Math.floor(reward.exp * (1 + 20 / 100) ** ((i == 0 ? 7 : i) - 1));
 				const day = i == 7 ? getLang("sunday") :
 					i == 6 ? getLang("saturday") :
