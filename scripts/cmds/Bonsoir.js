@@ -1,4 +1,4 @@
-€cmd install bonsoir.js module.exports = {
+module.exports = {
 	config: {
 			name: "bonsoir",
 			version: "1.0",
@@ -15,6 +15,6 @@ onChat: async function({
 	message,
 	getLang
 }) {
-	if (event.body && event.body.toLowerCase() == "bonsoir") return message.reply("BONSOIR À TOI REJOINS LE GROUPE :𝑅𝑎𝑝 𝑚𝑎𝑛𝑔𝑎 𝑓𝑜𝑟𝑒𝑣𝑒𝑟 https://facebook.com/groups/847142893760968/ rejoins le groupe si t'es un Otaku et PASSE UNE EXCELLENTE SOIRÉE !");
+	if (event.body && event.body.toLowerCase() == "bonsoir") return message.reply("𝐁𝐨𝐧𝐬𝐨𝐢𝐫 ⚜️");
 }
 };
