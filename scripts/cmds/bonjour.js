@@ -1,8 +1,8 @@
-€cmd install bonjour.js module.exports = {
+module.exports = {
 	config: {
 			name: "bonjour",
 			version: "1.0",
-			author: "messie OSANGO",
+			author: "𝐍𝐨𝐫𝐚'𝐬 𝐋𝐨𝐫𝐝",
 			countDown: 5,
 			role: 0,
 			shortDescription: "sarcasm",
@@ -15,6 +15,6 @@ onChat: async function({
 	message,
 	getLang
 }) {
-	if (event.body && event.body.toLowerCase() == "bonjour") return message.reply("𝑅𝑎𝑝 𝑚𝑎𝑛𝑔𝑎 𝑓𝑜𝑟𝑒𝑣𝑒𝑟 :  https://facebook.com/groups/847142893760968/ REJOINS LE GROUPE COMME REMERCIEMENT POUR MES SERVICES");
+	if (event.body && event.body.toLowerCase() == "bonjour") return message.reply("𝐁𝐨𝐧𝐣𝐨𝐮𝐫 ⚜️");
 }
 };
