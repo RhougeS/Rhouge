@@ -1,111 +1,92 @@
-€cmd install prefix.js const fs = require("fs-extra");
-const { utils } = global;
+const moment = require("moment-timezone");
 
 module.exports = {
 	config: {
-		name: "prefix",
-		version: "1.4",
+		name: "don",
+		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: "Thay đổi dấu lệnh của bot trong box chat của bạn hoặc cả hệ thống bot (chỉ admin bot)",
-		category: "config",
+		description: {
+			vi: "Nhận quà hàng ngày",
+			en: "𝑹𝒆𝒄𝒆𝒗𝒐𝒊𝒓 𝒅𝒆𝒔 𝑫𝒐𝒏𝒔 𝒒𝒖𝒐𝒕𝒊𝒅𝒊𝒆𝒏𝒔."
+		},
+		category: "game",
 		guide: {
-			vi: "   {pn} <new prefix>: thay đổi prefix mới trong box chat của bạn"
-				+ "\dụ:"
-				+ "\n} #"
-				+ "\n} <new prefix> -g: thay đổi prefix mới trong hệ thống bot (chỉ admin bot)"
-				+ "\dụ:"
-				+ "\n} # -g"
-				+ "\n} reset: thay đổi prefix trong box chat của bạn về mặc định",
-			en: "   {pn} <new prefix>: change new prefix in your box chat"
-				+ "\mple:"
-				+ "\n} #"
-				+ "\n} <new prefix> -g: change new prefix in system bot (only admin bot)"
-				+ "\mple:"
-				+ "\n} # -g"
-				+ "\n} reset: change prefix in your box chat to default"
+			vi: "   {pn}: Nhận quà hàng ngày"
+				+ "\n   {pn} info: Xem thông tin quà hàng ngày",
+			en: "   {pn} :  𝑷𝒐𝒖𝒓 𝑹𝒆́𝒄𝒍𝒂𝒎𝒆𝒓 𝒕𝒐𝒏 𝑫𝒖̂."
+				+ "\n   {pn} 𝒊𝒏𝒇𝒐 :  𝑷𝒐𝒖𝒓 𝒗𝒐𝒊𝒓 𝒍𝒆 𝑪𝒐𝒏𝒕𝒆𝒏𝒖 𝒅𝒖 𝑫𝒐𝒏 𝒅𝒖 𝑱𝒐𝒖𝒓. 𝑬𝒕 𝒑𝒆𝒖𝒕-𝒆̂𝒕𝒓𝒆, 𝒍𝒆𝒔 𝒊𝒏𝒇𝒐𝒔 𝒄𝒐𝒏𝒄𝒆𝒓𝒏𝒂𝒏𝒕𝒔."
+		},
+		envConfig: {
+			rewardFirstDay: {
+				coin: 90000,
+				exp: 50
+			}
 		}
 	},
 
 	langs: {
 		vi: {
-			reset: "Đã reset prefix của bạn về mặc định: %1",
-			onlyAdmin: "Chỉ admin mới có thể thay đổi prefix hệ thống bot",
-			confirmGlobal: "Vui lòng thả cảm xúc bất kỳ vào tin nhắn này để xác nhận thay đổi prefix của toàn bộ hệ thống bot",
-			confirmThisThread: "Vui lòng thả cảm xúc bất kỳ vào tin nhắn này để xác nhận thay đổi prefix trong nhóm chat của bạn",
-			successGlobal: "Đã thay đổi prefix hệ thống bot thành: %1",
-			successThisThread: "Đã thay đổi prefix trong nhóm chat của bạn thành: %1",
-			myPrefix: "🌐 Prefix của hệ thống: %1\fix của nhóm bạn: %2"
+			monday: "Thứ 2",
+			tuesday: "Thứ 3",
+			wednesday: "Thứ 4",
+			thursday: "Thứ 5",
+			friday: "Thứ 6",
+			saturday: "Thứ 7",
+			sunday: "Chủ nhật",
+			alreadyReceived: "Bạn đã nhận quà rồi",
+			received: "Bạn đã nhận được %1 coin và %2 exp"
 		},
 		en: {
-			reset: "Your prefix has been reset to default: %1",
-			onlyAdmin: "Only admin can change prefix of system bot",
-			confirmGlobal: "Please react to this message to confirm change prefix of system bot",
-			confirmThisThread: "Please react to this message to confirm change prefix in your box chat",
-			successGlobal: "Changed prefix of system bot to: %1",
-			successThisThread: "Changed prefix in your box chat to: %1",
-			myPrefix: "𝐏𝐑𝐄𝐅𝐈𝐗 satoru 🍀:☞ [ %1 ] ________________\ngojo satoru:☞[ %2 ] ____________________\n  SATORU Gojo\n_______________\n \n𝗧𝗮𝗽𝗲 €𝗵𝗲𝗹𝗽 𝗽𝗼𝘂𝗿 𝗮𝘃𝗼𝗶𝗿 𝗹𝗮 𝗹𝗶𝘀𝘁𝗲 𝗱𝗲 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 ✿❯────「𝑉𝑂𝐼𝐶𝐼 𝑀𝑂𝑁 𝑃𝑅𝐸𝐹𝐼𝑋 」────❮✿: %2  ●▬▬▬▬๑۩ 𝑀𝑂𝑁 𝑃𝑅𝐸𝐹𝐼𝑋 : %2  ۩๑▬▬▬▬▬● "
+			monday: "Monday",
+			tuesday: "Tuesday",
+			wednesday: "Wednesday",
+			thursday: "Thursday",
+			friday: "Friday",
+			saturday: "Saturday",
+			sunday: "Sunday",
+			alreadyReceived: "⚜🌹.................................. \n \n𝑻'𝒆𝒏 𝒂𝒔 𝑫𝒆́𝒋𝒂̀ 𝑹𝒆𝒄̧𝒖, 𝒕𝒂 𝒑𝒂𝒓𝒕 𝒅𝒖 𝒅𝒐𝒏 𝒒𝒖𝒐𝒕𝒊𝒅𝒊𝒆𝒏 🤨\n \n⚜🌹.................................. ",
+			received: "⚜🌹.................................. \n \n𝐃𝐎𝐍 𝐐𝐔𝐎𝐓𝐈𝐃𝐈𝐄𝐍 😎: \n \n𝑻𝒖 𝒈𝒂𝒈𝒏𝒆𝒔 :  \n     ✦ 𝒖𝒏𝒆 𝒔𝒐𝒎𝒎𝒆 𝒅𝒆  %1 $ , \n     ✦  %2  𝒑𝒐𝒊𝒏𝒕𝒔 𝒅'𝑬𝒙𝒑𝒆́𝒓𝒊𝒆𝒏𝒄𝒆. \n \n⚜🌹.................................. "
 		}
 	},
 
-	onStart: async function ({ message, role, args, commandName, event, threadsData, getLang }) {
-		if (!args[0])
-			return message.SyntaxError();
-
-		if (args[0] == 'reset') {
-			await threadsData.set(event.threadID, null, "data.prefix");
-			return message.reply(getLang("reset", global.GoatBot.config.prefix));
+	onStart: async function ({ args, message, event, envCommands, usersData, commandName, getLang }) {
+		const reward = envCommands[commandName].rewardFirstDay;
+		if (args[0] == "info") {
+			let msg = "";
+			for (let i = 1; i < 8; i++) {
+				const getCoin = Math.floor(reward.coin * (5 + 20 / 100) ** ((i == 0 ? 7 : i) - 1));
+				const getExp = Math.floor(reward.exp * (1 + 20 / 100) ** ((i == 0 ? 7 : i) - 1));
+				const day = i == 7 ? getLang("sunday") :
+					i == 6 ? getLang("saturday") :
+						i == 5 ? getLang("friday") :
+							i == 4 ? getLang("thursday") :
+								i == 3 ? getLang("wednesday") :
+									i == 2 ? getLang("tuesday") :
+										getLang("monday");
+				msg += `${day}: ${getCoin} coin, ${getExp} exp\n`;
+			}
+			return message.reply(msg);
 		}
-  const helpListImages = [
-        "https://i.ibb.co/HgN9N8H/image.jpg",
-        "https://i.ibb.co/BVqHC54/image.jpg",
-        "https://i.ibb.co/54hpf9s/image.jpg",
-        "https://i.ibb.co/8xjnwfk/image.jpg",
-        // Add more image links as needed
-      ];
 
-      const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
-		const newPrefix = args[0];
-		const formSet = {
-			commandName,
-			author: event.senderID,
-			newPrefix
-		};
+		const dateTime = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY");
+		const date = new Date();
+		const currentDay = date.getDay(); // 0: sunday, 1: monday, 2: tuesday, 3: wednesday, 4: thursday, 5: friday, 6: saturday
+		const { senderID } = event;
 
-		if (args[1] === "-g")
-			if (role < 2)
-				return message.reply(getLang("onlyAdmin"));
-			else
-				formSet.setGlobal = true;
-		else
-			formSet.setGlobal = false;
+		const userData = await usersData.get(senderID);
+		if (userData.data.lastTimeGetReward === dateTime)
+			return message.reply(getLang("alreadyReceived"));
 
-		return message.reply(args[1] === "-g" ? getLang("confirmGlobal") : getLang("confirmThisThread"), (err, info) => {
-			formSet.messageID = info.messageID;
-			global.GoatBot.onReaction.set(info.messageID, formSet);
+		const getCoin = Math.floor(reward.coin * (1 + 20 / 100) ** ((currentDay == 0 ? 7 : currentDay) - 1));
+		const getExp = Math.floor(reward.exp * (1 + 20 / 100) ** ((currentDay == 0 ? 7 : currentDay) - 1));
+		userData.data.lastTimeGetReward = dateTime;
+		await usersData.set(senderID, {
+			money: userData.money + getCoin,
+			exp: userData.exp + getExp,
+			data: userData.data
 		});
-	},
-
-	onReaction: async function ({ message, threadsData, event, Reaction, getLang }) {
-		const { author, newPrefix, setGlobal } = Reaction;
-		if (event.userID !== author)
-			return;
-		if (setGlobal) {
-			global.GoatBot.config.prefix = newPrefix;
-			fs.writeFileSync(global.client.dirConfig, JSON.stringify(global.GoatBot.config, null, 2));
-			return message.reply(getLang("successGlobal", newPrefix));
-		}
-		else {
-			await threadsData.set(event.threadID, newPrefix, "data.prefix");
-			return message.reply(getLang("successThisThread", newPrefix));
-		}
-	},
-
-	onChat: async function ({ event, message, getLang }) {
-		if (event.body && event.body.toLowerCase() === "prefix")
-			return () => {
-				return message.reply(getLang("myPrefix", global.GoatBot.config.prefix, utils.getPrefix(event.threadID)));
-			};
+		message.reply(getLang("received", getCoin, getExp));
 	}
 };
