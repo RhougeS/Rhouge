@@ -1,4 +1,4 @@
-€cmd install clear.js module.exports = {
+module.exports = {
   config: {
     name: "clear",
     aliases: [],
