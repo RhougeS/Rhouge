@@ -7,16 +7,16 @@ module.exports = {
 		role: 0,
 		description: {
 			vi: "Xem số lượng tin nhắn của tất cả thành viên hoặc bản thân (tính từ lúc bot vào nhóm)",
-			en: "Voir le Nombre de Message écrit par Moi et par tous les autres Membres depuis que le Bot a été ajouté au Groupe."
+			en: "View the number of messages of all members or yourself (since the bot joined the group)"
 		},
 		category: "box chat",
 		guide: {
 			vi: "   {pn}: dùng để xem số lượng tin nhắn của bạn"
 				+ "\n   {pn} @tag: dùng để xem số lượng tin nhắn của những người được tag"
 				+ "\n   {pn} all: dùng để xem số lượng tin nhắn của tất cả thành viên",
-			en: "    {pn}: Pour voir le Nombre de Message écrit par Moi-même."
-				+ "\n    {pn} <@Nom d'un utilisateur>:  Pour voir le Nombre de Message écrit par Lui."
-				+ "\n    {pn} all:   Pour voir le Nombre de Message écrit par tous les Membres."
+			en: "   {pn}: used to view the number of messages of you"
+				+ "\n   {pn} @tag: used to view the number of messages of those tagged"
+				+ "\n   {pn} all: used to view the number of messages of all members"
 		}
 	},
 
@@ -31,13 +31,13 @@ module.exports = {
 			invalidPage: "Số trang không hợp lệ"
 		},
 		en: {
-			count: "⚜🌹𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄 𝐌𝐄𝐒𝐒𝐀𝐆𝐄 𝐏𝐀𝐑 𝐌𝐄𝐌𝐁𝐑𝐄🌹⚜",
-			endMessage: "Ceux dont le Nom ne Figure pas sur la Liste n'ont tout bonnement Envoyé Aucun Message dans le Groupe.",
+			count: "Number of messages of members:",
+			endMessage: "Those who do not have a name in the list have not sent any messages.",
 			page: "Page [%1/%2]",
-			reply: "Réponds à ce Message avec le Nombre de Page pour voir plus (la page suivante).",
-			result: "%1 est au Rang %2 avec %3 Messages envoyés dans le groupe✌.",
-			yourResult: "⚜🌹.................................. \n \n Tu es au Rang %1 avec %2 Messages envoyés dans le groupe ✌. \n \n ⚜🌹..................................",
-			invalidPage: "⚜🌹.................................. \n \nNombre de Page Invalide \n \n ⚜🌹.................................."
+			reply: "Reply to this message with the page number to view more",
+			result: "%1 rank %2 with %3 messages",
+			yourResult: "You are ranked %1 and have sent %2 messages in this group",
+			invalidPage: "Invalid page number"
 		}
 	},
 
@@ -50,7 +50,7 @@ module.exports = {
 		for (const user of members) {
 			if (!usersInGroup.includes(user.userID))
 				continue;
-			const charac = ""; // This character is banned from facebook chat (it is not an empty string)
+			const charac = "️️️️️️️️️️️️️️️️️"; // This character is banned from facebook chat (it is not an empty string)
 			arraySort.push({
 				name: user.name.includes(charac) ? `Uid: ${user.userID}` : user.name,
 				count: user.count,
@@ -161,5 +161,5 @@ module.exports = {
 			findMember.count += 1;
 		await threadsData.set(threadID, members, "members");
 	}
+
 };
-		
