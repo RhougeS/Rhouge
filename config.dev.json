@@ -1,7 +1,7 @@
 {
 	"facebookAccount": {
-		"email": "saidylking@gmail.com",
-		"password": "2002-togbe4",
+		"email" :   "",
+		"password": "",
 		"2FASecret": "",
 		"i_user": "",
 		"proxy": null,
@@ -12,7 +12,7 @@
 	"antiInbox": false,
 	"language": "en",
 	"notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
-	"nickNameBot": "𝐬𝐚𝐢𝐝𝐲𝐥",
+	"nickNameBot": "༒ᎠᕱᏒᎠꂅᏒᏒ༒",
 	"prefix": "#",
 	"adminOnly": {
 		"enable": false,
